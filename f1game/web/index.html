@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>F1 Game</title>
+	<style>
+		html, body { margin: 0; height: 100%; background: #0f0f12; display: flex; align-items: center; justify-content: center; }
+		canvas { image-rendering: pixelated; }
+	</style>
+</head>
+<body>
+	<script src="wasm_exec.js"></script>
+	<script>
+		const go = new Go();
+		WebAssembly.instantiateStreaming(fetch("f1game.wasm"), go.importObject).then((result) => {
+			go.run(result.instance);
+		});
+	</script>
+</body>
+</html>
